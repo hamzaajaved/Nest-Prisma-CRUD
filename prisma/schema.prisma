@@ -15,7 +15,7 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   name      String
-  email     String
+  email     String   @unique
   password  String
   type      UserType @default(USER)
   todos     Todo[]
