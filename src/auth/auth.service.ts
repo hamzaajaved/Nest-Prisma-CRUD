@@ -34,6 +34,13 @@ export class AuthService {
       },
     });
 
-    if (!user) throw new ForbiddenException('Incorrent Credentials');
+    if (!user) throw new ForbiddenException('Incorrect Credentials');
+
+    const isPasswordMatch = await argon.verify(user.password, password);
+
+    if(!isPasswordMatch) throw new ForbiddenException ('Invalid password');
+
+    return user;
+
   }
 }
