@@ -11,7 +11,13 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Todo API')
     .setVersion('1.0')
-    .build();
+    .addSecurity('authorization', {
+      type: 'apiKey',
+      description: 'API Authorization',
+      name: 'authorization',
+      in: 'header',
+  }).build();
+
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
