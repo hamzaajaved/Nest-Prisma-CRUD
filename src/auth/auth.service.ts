@@ -60,7 +60,7 @@ export class AuthService {
     });
 
     return {
-      token: token 
+      token: `Bearer ${token}` 
     }
   }
 }
