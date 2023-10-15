@@ -1,15 +1,18 @@
 import { Controller, Get, UseGuards } from '@nestjs/common';
 import { ApiTags,ApiBearerAuth } from '@nestjs/swagger';
-import { AuthGuard } from '@nestjs/passport';
+import { User } from '@prisma/client';
 
-@ApiTags('users')
-@Controller('users')
+import { JwtGuard } from 'src/auth/guard';
+import { CurrentUser } from 'src/decorators';
+
+@UseGuards(JwtGuard)
+@ApiTags('user')
+@Controller('user')
 export class UserController {
 
-    @UseGuards(AuthGuard("jwt"))
     @ApiBearerAuth("Authorization")
     @Get('me')
-    getMe() {
-        return "user info"
+    getMe(@CurrentUser() user: User) {
+        return user;
     }
 } 
