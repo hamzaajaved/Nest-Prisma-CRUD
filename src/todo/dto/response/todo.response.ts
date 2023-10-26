@@ -22,6 +22,7 @@ export class TodoResponseDTO {
     count: number;
 }
 
+export class getTodoByIdResponseDTO extends TodoModel {}
 
 export class BooleanResponseDTO {
   data: boolean

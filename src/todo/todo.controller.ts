@@ -1,11 +1,11 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
-import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiResponse, ApiTags, ApiParam } from '@nestjs/swagger';
 import { User } from '@prisma/client';
 
 import { TodoService } from './todo.service';
 import { CurrentUser } from 'src/decorators';
 import { JwtGuard } from 'src/auth/guard';
-import { TodoResponseDTO } from './dto/response';
+import { TodoResponseDTO, getTodoByIdResponseDTO } from './dto/response';
 import { TodoRequestDTO } from './dto/request';
 
 @Controller('/todo')
@@ -23,7 +23,9 @@ export class TodoController {
     }
 
     @Get("/:id")
+    @ApiParam({name: "id" })
     @ApiBearerAuth('Authorization')
+    @ApiResponse({type: getTodoByIdResponseDTO})
     getTodosById (id: number) {
 
     }
