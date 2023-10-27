@@ -10,8 +10,8 @@ import {
 import { ApiTags, ApiBearerAuth, ApiResponse } from '@nestjs/swagger';
 import { User } from '@prisma/client';
 
-import { JwtGuard } from 'src/auth/guard';
-import { CurrentUser } from 'src/decorators';
+import { JwtGuard } from '../../src/auth/guard';
+import { CurrentUser } from '../../src/decorators';
 import { UserService } from './user.service';
 import { UpdateUserRequestDTO } from './dto/request';
 import { GetMeResponseDTO, UpdateUseResponseDTO } from './dto/response';

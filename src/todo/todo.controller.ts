@@ -3,8 +3,8 @@ import { ApiBearerAuth, ApiResponse, ApiTags, ApiParam } from '@nestjs/swagger';
 import { User } from '@prisma/client';
 
 import { TodoService } from './todo.service';
-import { CurrentUser } from 'src/decorators';
-import { JwtGuard } from 'src/auth/guard';
+import { CurrentUser } from '../../src/decorators';
+import { JwtGuard } from '../../src/auth/guard';
 import { TodoResponseDTO, getTodoByIdResponseDTO } from './dto/response';
 import { TodoRequestDTO } from './dto/request';
 
